@@ -31,6 +31,8 @@ function result() {
   }
 
   storyString = storyString.replace(":insertx:", randomValueFromArray(arrayNames))
+
+  storyString = storyString.replace(":insertz:", randomValueFromArray(arrayVerbs))
   
 
   story.textContent = storyString;
