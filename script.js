@@ -1,7 +1,7 @@
 const customName = document.getElementById('customname');
 const randomize = document.querySelector('.randomize');
 const story = document.querySelector('.story');
-let storyString = `It was 94 fahrenheit outside, 
+let originalStory = `It was 94 fahrenheit outside, 
 so :insertx: went for a walk. When they got to :inserty:, they stared in horror for a few moments, then :insertz:. 
 Bob saw the whole thing, but was not surprised — :insertx: weighs 300 pounds, and it was a hot day.`
 
@@ -21,6 +21,8 @@ randomize.addEventListener('click', result);
 
 function result() {
 
+  let newString = '';
+
   if(customName.value !== '') {
     const name = customName.value;
   }
@@ -30,9 +32,13 @@ function result() {
     const temperature =  Math.round(94);
   }
 
-  storyString = storyString.replace(":insertx:", randomValueFromArray(arrayNames))
+  newString = originalStory.replace(/:insertx:/g, randomValueFromArray(arrayNames));
+
+  newString = newString.replace(/:inserty:/g, randomValueFromArray(arrayItems));
+
+  newString = newString.replace(/:insertz:/g, randomValueFromArray(arrayItems));
   
 
-  story.textContent = storyString;
+  story.textContent = newString;
   story.style.visibility = 'visible';
 }
